@@ -4,6 +4,7 @@
   "description": "16th delivery for CoderHouse's Backend Dev. course",
   "main": "index.js",
   "scripts": {
+    "start": "node src/server.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
