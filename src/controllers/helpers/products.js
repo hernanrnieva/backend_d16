@@ -1,3 +1,5 @@
+const ProductDto = require("../../dtos/productDto")
+
 const PRODUCT_KEYS = 3
 
 const validateProduct = (product) => {
@@ -11,6 +13,16 @@ const validateProduct = (product) => {
     return product
 }
 
+const generateProductDto = (p) => {
+    return new ProductDto(p)
+}
+
+const generateProductDtos = (products) => {
+    return products.map(p => { return new ProductDto(p)})
+}
+
 module.exports = {
-    validateProduct
+    validateProduct,
+    generateProductDtos,
+    generateProductDto
 }

@@ -1,7 +1,7 @@
 const messageNormalizer = require('../controllers/normalizr')
 const messageDao = require('../daos/factory/daoFactory').getMessagePersistence()
 const logError = require('../logs/loggers').logError
-const validateMessage = require('./helpers/messages').validateMessage
+const messageHelpers = require('./helpers/messages')
 
 const messageController = {
     sendMessages: (socket) => {
@@ -20,7 +20,7 @@ const messageController = {
         })
     },
     createMessage: (message, socket, sockets) => {
-        message = validateMessage(message)
+        message = messageHelpers.validateMessage(message)
         if(!message) {
             logError(`Invalid message data`)
             socket.emit('eMessage')

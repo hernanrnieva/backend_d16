@@ -1,3 +1,5 @@
+const MessageDto = require('../../dtos/messageDto')
+
 const MESSAGE_KEYS = 2
 
 const validateMessage = (message) => {
@@ -17,6 +19,16 @@ const validateMessage = (message) => {
     return null
 }
 
+const generateMessageDto = (m) => {
+    return new MessageDto(m)
+}
+
+const generateMessageDtos = (messages) => {
+    return messages.map(m => { return new MessageDto(m)})
+}
+
 module.exports = {
-    validateMessage
+    validateMessage,
+    generateMessageDto,
+    generateMessageDtos
 }
