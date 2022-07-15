@@ -37,6 +37,10 @@ class DaoFactory {
         if(data.messagesPersistence == 'file') return messageDaoFile
         if(data.messagesPersistence == 'mongo') return messageDaoMongo
     }
+
+    getDate() {
+        return this.date
+    }
 }
 
 const daoFactory = new DaoFactory()

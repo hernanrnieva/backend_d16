@@ -2,6 +2,7 @@ const {faker: faker} = require('@faker-js/faker')
 faker.locale = 'en'
 const {commerce, image} = faker
 const logInfo = require('../logs/loggers').logInfo
+const factory = require('../daos/factory/daoFactory')
 
 function returnElement(){
     const element = {}
@@ -21,6 +22,9 @@ const testController = {
             data.push(returnElement())
 
         res.render('layouts/main-test', {products: data})
+    },
+    getTestFactory: (req, res) => {
+        res.render('layouts/factory', {factoryDate: factory.getDate()})
     }
 }
 

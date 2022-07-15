@@ -3,6 +3,7 @@ const testRouter = express.Router()
 const testController = require('../controllers/test')
 
 /* Test render */
-testRouter.get('/', testController.getTestProducts)
+testRouter.get('/products', testController.getTestProducts)
+testRouter.get('/factory', testController.getTestFactory)
 
 module.exports = testRouter

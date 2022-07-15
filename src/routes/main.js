@@ -6,7 +6,7 @@ const infoRouter = require('./info')
 const logWarn = require('../logs/loggers').logWarn
 
 mainRouter.use('/', userRouter)
-mainRouter.use('/products-test', testRouter)
+mainRouter.use('/test', testRouter)
 mainRouter.use('/info', infoRouter)
 
 mainRouter.use((req, res) => {
