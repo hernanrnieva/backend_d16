@@ -1,15 +1,12 @@
 require('dotenv').config()
 
 /* Users */
-const userDaoFile = require('../users/usersDaoFile')
 const userDaoMongo = require('../users/usersDaoMongo')
 
 /* Products */
-const productDaoFile = require('../products/productsDaoFile')
 const productDaoMongo = require('../products/productsDaoMongo')
 
 /* Messages */
-const messageDaoFile = require('../messages/messagesDaoFile')
 const messageDaoMongo = require('../messages/messagesDaoMongo')
 
 const data = {
@@ -24,17 +21,17 @@ class DaoFactory {
     }
 
     getUserPersistence() {
-        if(data.usersPersistence == 'file') return userDaoFile
+        if(data.usersPersistence == 'file') return require('../users/usersDaoFile')
         if(data.usersPersistence == 'mongo') return userDaoMongo
     }
 
     getProductPersistence() {
-        if(data.productsPersistence == 'file') return productDaoFile
+        if(data.productsPersistence == 'file') return require('../products/productsDaoFile')
         if(data.productsPersistence == 'mongo') return productDaoMongo
     }
 
     getMessagePersistence() {
-        if(data.messagesPersistence == 'file') return messageDaoFile
+        if(data.messagesPersistence == 'file') return require('../users/usersDaoFile')
         if(data.messagesPersistence == 'mongo') return messageDaoMongo
     }
 
