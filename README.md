@@ -27,6 +27,7 @@ Start from the [Home](http://localhost:8080/login) section
 
 ## Considerations
 
+- Immutability of the Factory instance is checked in [Factory Date route](http://localhost:8080/test/factory)
 - Persistence mode is defined by variables in .env file, not command lines
 - MessageDTO is not used because of the existing usage of normalized data
 - UserDTO is not used because of the existing usage of passport module
