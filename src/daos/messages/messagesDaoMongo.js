@@ -1,6 +1,6 @@
 require('dotenv').config()
-const ContainerMongoDB = require('../persistence/mongo')
-const messageModel = require('../persistence/models/message')
+const ContainerMongoDB = require('../../persistence/mongo')
+const messageModel = require('../../persistence/models/message')
 const URL = process.env.MONGOURL
 
 class MessageDaoMongoDB extends ContainerMongoDB{

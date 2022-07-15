@@ -2,6 +2,8 @@
 **/__base
 **/__db
 messages.txt
+users.txt
+products.txt
 **.sqlite
 **/sessions
 **/nginx

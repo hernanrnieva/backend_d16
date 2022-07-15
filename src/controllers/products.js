@@ -1,7 +1,7 @@
 const hbs = require('handlebars')
 const fs = require('fs')
 const validateProduct = require('./helpers/products').validateProduct
-const productDao = require('../daos/productsDaoMongo')
+const productDao = require('../daos/factory/daoFactory').getProductPersistence()
 const fileContent = fs.readFileSync('./src/public/views/partials/table.hbs').toString()
 const template = hbs.compile(fileContent)
 

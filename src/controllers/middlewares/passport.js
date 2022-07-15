@@ -2,7 +2,7 @@ const passport = require('passport')
 const Strategy = require('passport-local').Strategy
 const localStrategy = Strategy
 const logInfo = require('../../logs/loggers').logInfo
-const users = require('../../daos/usersDaoMongo')
+const userDao = require('../../daos/factory/daoFactory').getUserPersistence()
 const bcrypt = require ('bcrypt')
 
 /* Bcrypt settings */
@@ -11,7 +11,7 @@ const saltRounds = 2
 // Login
 passport.use('login', new localStrategy({usernameField: 'email'}, async function(username, password, done) {
     logInfo(`URL: /login & METHOD: POST`)
-    const exists = await users.getById(username)
+    const exists = await userDao.getById(username)
     if(!exists)
         return done(null, false)
     
@@ -26,13 +26,13 @@ passport.use('login', new localStrategy({usernameField: 'email'}, async function
 // Register
 passport.use('register', new localStrategy({usernameField: 'email'}, async function(username, password, done) {
     logInfo(`URL: /register & METHOD: POST`)
-    const exists = await users.getById(username)
+    const exists = await userDao.getById(username)
     if(exists)
         return done(null, false)
 
     bcrypt.hash(password, saltRounds, function(err, hash) {
         const newUser = {id: username, password: hash}
-        users.save(newUser).then(() => {
+        userDao.save(newUser).then(() => {
             return done(null,newUser)
         }).catch((e) => {
             console.log(e)
@@ -45,7 +45,7 @@ passport.serializeUser((user, done) => {
 })
 
 passport.deserializeUser(async function(user, done) {
-    const dsUser = users.getById(user.id)
+    const dsUser = userDao.getById(user.id)
     done(null, dsUser)
 })
 

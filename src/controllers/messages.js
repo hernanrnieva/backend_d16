@@ -1,5 +1,5 @@
 const messageNormalizer = require('../controllers/normalizr')
-const messageDao = require('../daos/messagesDaoMongo')
+const messageDao = require('../daos/factory/daoFactory').getMessagePersistence()
 const logError = require('../logs/loggers').logError
 const validateMessage = require('./helpers/messages').validateMessage
 
